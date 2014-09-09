@@ -1,0 +1,50 @@
+*{margin:0;padding:0;font-family:"微软雅黑";font-size:14px;}
+a{text-decoration:none;}
+a:hover{text-decoration:none;}
+body{background:#ebebeb;}
+
+.bg9{background:#999;}
+.w55{width:55px;}
+.mr4{margin-right:4px;}
+.p14{padding:11px;}
+.mt0{margin-top:0px;}
+.h230{height:230px;}
+.cred{color:#e20000;}
+.bgd{background:#dddddd;}
+.close{ cursor:pointer;}
+.b19{border:1px #999 solid;}
+.bg01{/*background:#ebecec;-moz-border-radius:5px;*/border-radius:5px;}
+.content{background:#ffffff;border:1px #e5e5e5 solid;border-radius:4px;-moz-border-radius:4px; }
+.text1{border: 1px solid #999999;-webkit-box-shadow: 0px 0px 5px rgba(0,0,0,.2) inset;-moz-box-shadow: 0px 0px 5px rgba(0,0,0,.2) inset;box-shadow: 0px 0px 5px rgba(0,0,0,.2) inset;border-radius:5px;-moz-border-radius:5px;width:90%;padding-left:5%;padding-right:5%;}
+.add_img{display:block;width:55px;height:55px;background:url(add.jpg) no-repeat;background-size:55px; cursor:pointer;}
+.save{background:#005bac;display:block;border-radius:5px;-moz-border-radius:5px;width:70px;}
+.save:hover{color:#fff;}
+.edit{word-wrap:break-word;word-break:break-all}
+.edit img{max-height:300px;}
+.rbiao{display:inline-block;width:15px;height:15px;background:url(../../images/content/ui/rbiao.png) center center no-repeat;background-size:15px;}
+.textarea_style{resize: none;border:none;width:90%;height:160px;padding:5%;}
+.textarea_wrap{box-shadow: 0px 1px 2px #aaa inset;}
+.edui-editor{width:100% !important;}
+
+.index_a{position:fixed;display:block;width:100%;height:100%;background:#fff;}
+.index_span{position:absolute;z-index:99;bottom:30px;display:block;text-align:center;font-size:16px;left:50%;margin-left:-80px;}
+
+div.contert{text-indent: 2em;}
+div.contert div{font-size:16px;}
+div.contert strong{font-size:16px; font-weight:bold;}
+div.contert span{font-size:16px;}
+div.contert p{font-size:16px !important;text-indent: 2em;}
+
+.cblue{color:#005bac;}
+.bt1s_c{border-top:1px #ccc dashed;}
+.add{display:block;width:60px;height:33px;background:url(../../images/content/ui/add_group.jpg) center center no-repeat;background-size:50px;border:1px #999999 solid;border-radius:2px;-moz-border-radius:2px;}
+.weixin_biao{width:140px;position:absolute;top:30%;left:50%;margin-left:-70px;margin-top:-70px;}
+/*@media screen and (max-width: 320px){
+	.weixin_biao{width:40%;margin-top:20%;max-width:300px;}
+}*/
+
+/*404页面添加*/
+.content_404_wrap{position:fixed;width:100%;height:100%;}
+.content_404{background:#ffffff;border:1px #e5e5e5 solid;border-radius:4px;-moz-border-radius:4px;height:95%;}
+.percent_40{padding-top:40%;}
+.pt0{padding-top:0px;}

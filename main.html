@@ -1,0 +1,153 @@
+<html>
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0">
+<meta content="yes" name="apple-mobile-web-app-capable">
+<meta content="yes" name="apple-touch-fullscreen">
+<meta content="yes" name="full-screen">
+<meta content="black" name="apple-mobile-web-app-status-bar-style">
+<meta content="telephone=no" name="format-detection">
+<meta content="address=no" name="format-detection">
+
+
+<script src="jquery.js" type="text/javascript"></script>
+<script src="binaryajax.js"></script>
+<script type="text/vbscript">
+Function IEBinary_getByteAt(strBinary, iOffset)
+	IEBinary_getByteAt = AscB(MidB(strBinary, iOffset + 1, 1))
+End Function
+Function IEBinary_getBytesAt(strBinary, iOffset, iLength)
+  Dim aBytes()
+  ReDim aBytes(iLength - 1)
+  For i = 0 To iLength - 1
+   aBytes(i) = IEBinary_getByteAt(strBinary, iOffset + i)
+  Next
+  IEBinary_getBytesAt = aBytes
+End Function
+Function IEBinary_getLength(strBinary)
+	IEBinary_getLength = LenB(strBinary)
+End Function
+</script>
+
+<script src="exif.js"></script>
+<script src="megapix-image.js"></script>
+<script src="jquery.make-thumb.js"></script>
+
+<style type="text/css">
+.add_img_div{
+	background: url("add.jpg") no-repeat scroll 0 0 / 55px auto rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: block;
+    height: 55px;
+    width: 55px;
+	float:left;
+}
+
+.add_img_div .fileinput{
+	width:55px; height:55px; opacity:0; cursor:pointer;
+}
+
+.up_file_div{
+	float:left;
+}
+
+.up_file_div .img_ck{
+	  margin-right: 4px;  fl mr4
+	  width: 55px;
+	  display: inline;
+	  float: left;
+	  position: relative;
+}
+.up_file_div  .close_span{
+	right: 0;
+    top: 0;
+    cursor: pointer;
+	display: block;
+	position: absolute;
+}
+
+.close_span img{
+	height:16px;
+	width:16px;
+}
+
+</style>
+</head>
+
+<body>
+
+<div>
+<div class="up_file_div" id="up_file_div"></div>
+<div class="add_img_div">
+	<input class="fileinput" type="file" id="myfile_0" >
+</div>
+</div>
+
+
+<script type="text/javascript">
+function get(fileid,imgid){
+	var file_len=0;
+	return function (){
+		var file = $('#'+fileid);
+		var index=file_len;
+		file.makeThumb({
+			width: 480,
+			height: 600,
+			success: function(dataURL, tSize, file, sSize, fEvt) {
+				if(index!=file_len) return; 
+
+				var myDate = new Date();
+				var random = parseInt(10*Math.random())
+				var Minute = myDate.getMinutes();	//获取当前分钟
+				var Second = myDate.getSeconds();	//获取当前秒数
+				
+				var id = Minute+''+Second+''+random;
+
+				var html = '<div class="img_ck" id="'+id+'"><img src="'+dataURL+'" width="55" height="55"/><span class="close_span"  onclick="remove_del('+id+')"><img src="close.png"/></span><input type="hidden" name="'+imgid+'[]" value="'+dataURL+'" /></div>';
+				//alert(html);
+				$("#"+imgid).append(html); 
+				file_len=file_len+1;
+				//$("#img").after("&lt;img width='55' height='55' src='"+dataURL+"' /&gt;");
+				//$("#img").after("&lt;input type='hidden' name='base64[]' value='"+dataURL+"' /&gt;");
+			}
+		});
+	}
+}
+
+var x=get('myfile_0','up_file_div');
+$("#myfile_0").click(x);
+
+
+function click_file(fileid,imgid){
+	var file = $('#'+fileid);
+	var i = 1;
+    file.makeThumb({
+        width: 480,
+        height: 600,
+        success: function(dataURL, tSize, file, sSize, fEvt) {
+			var myDate = new Date();
+			var random = parseInt(10*Math.random())
+			var Minute = myDate.getMinutes();	//获取当前分钟
+			var Second = myDate.getSeconds();	//获取当前秒数
+			
+			var id = Minute+''+Second+''+random;
+
+			var html = '<div class="img_ck" id="'+id+'"><img src="'+dataURL+'" width="55" height="55"/><span class="close_span"  onclick="remove_del('+id+')"><img src="close.png"/></span><input type="hidden" name="'+imgid+'[]" value="'+dataURL+'" /></div>';
+			//alert(html);
+			if(i == 1) $("#"+imgid).append(html); 
+			//$("#img").after("&lt;img width='55' height='55' src='"+dataURL+"' /&gt;");
+			//$("#img").after("&lt;input type='hidden' name='base64[]' value='"+dataURL+"' /&gt;");
+        }
+    });
+}
+</script>
+<script type="text/javascript">
+function remove_del(id){
+	if(id){
+		if(confirm('您确定要删除吗?')){
+			$("#"+id).remove();
+		}
+	}
+};
+</script></body></html>
